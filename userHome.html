@@ -1,40 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Document</title>
-    <!-- CSS only -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="bank.js"></script>
-    </head>
+
+        <script src="bank.js"></script>
+</head>
 <body>
-    <h1>welcome to sbp bank</h1>
+
+    <h1>Welcome to SBN Bank</h1>
+
     <div class="container">
+
         <div class="row">
+
             <div class="col-8">
+
                 <div class="form-group">
-                    <label for="">username</label>
+                    <label for="">Username</label>
                     <input type="text" id="uname" class="form-control">
                 </div>
+
                 <div class="form-group">
-                    <label for="">password</label>
-                    <input type="text" id="pwd" class="form-control">
+                    <label for="">Password</label>
+                    <input type="password" id="pwd" class="form-control">
                 </div>
+
                 <div class="form-group">
-                    <label for="">amount</label>
+                    <label for="">Amount</label>
                     <input type="text" id="amt" class="form-control">
                 </div>
-                <div>
-                <button type="button" onclick="Bank.deposit" class="btn btn-primary">deposit</button>
 
-                <button type="button" onclick="Bank.withdraw" class="btn btn-primary">withdrawal</button>
-                </div>
+                <button type="button" onclick="Bank.deposit()" class="btn btn-primary">Deposit</button>
+
+                <button type="button" onclick="Bank.withdraw()" class="btn btn-primary">Withdrawal</button>
+
+
+
+
             </div>
-                <div class="col-4">
-            </div>
+
+            
+
+            <div class="col-4"></div>
         </div>
     </div>
+    
+    
 </body>
 </html>
