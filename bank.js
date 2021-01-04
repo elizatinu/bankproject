@@ -9,49 +9,88 @@ class Bank {
         }
         return accountDetails
     }
-    static login(){
-        let uname = document.querySelector("#username").value//userone
-        let pwd = document.querySelector("#password").value//test
+    static authenticateUser=(user,pwd)=>{
         let dataset = Bank.getData()
-        /*
-        {
-            userone:{acno: 1000, name: "tinu", bal: 20000, username: "username", password: "testuser"},
-            usertwo:{acno: 1001, name: "tonu", bal: 10000, username: "usertwo", password: "testuser1"},
-            userthree:{acno: 1002, name: "tanu", bal: 15000, username: "userthree", password: "testuser2"}
-        }*/
-        //chk uname present inside dataset
         if (uname in dataset) {
             if (dataset[uname].password == pwd) {
-                alert("login successful")
-                window.location.href = "userhome.html"
+                return 1;//valid user pwd
             }
             else {
-                alert("incorrect password")
+                return 0;//invalid pwd
             }
 
         }
         else {
-            alert("no user exist with provided username")
+            return -1;//no user exist
         }
+    }
+    static login(){
+        let uname = document.querySelector("#username").value//userone
+        let pwd = document.querySelector("#password").value//test
+        let us=Bank.authenticateUser(user,pwd)
+        if(us==1){
+            alert("login successful")
+                window.location.href = "userhome.html"
+        }
+        else if(us==0){
+            alert("incorrect password");
+        }
+        else if(us==-1){
+            alert("user doesnot exist");
+        }
+        // let dataset = Bank.getData()
+        // /*
+        // {
+        //     userone:{acno: 1000, name: "tinu", bal: 20000, username: "username", password: "testuser"},
+        //     usertwo:{acno: 1001, name: "tonu", bal: 10000, username: "usertwo", password: "testuser1"},
+        //     userthree:{acno: 1002, name: "tanu", bal: 15000, username: "userthree", password: "testuser2"}
+        // }*/
+        // //chk uname present inside dataset
+        // if (uname in dataset) {
+        //     if (dataset[uname].password == pwd) {
+        //         alert("login successful")
+        //         window.location.href = "userhome.html"
+        //     }
+        //     else {
+        //         alert("incorrect password")
+        //     }
+
+        // }
+        // else {
+        //     alert("no user exist with provided username")
+        // }
     }
     static deposit(){
         let uname = document.querySelector("#uname").value
         let pwd = document.querySelector("#pwd").value
         let amt =Number( document.querySelector("#amt").value)
+        let us=Bank.authenticateUser(user,pwd)
         let dataset = Bank.getData()
-        if (uname in dataset) {
-            if (dataset[uname].password == pwd) {
-                dataset[uname].balance += amt
-                alert("your acccount credited with amount" + amt + "aval bal=" + dataset[uname].balance)
-            }
-            else {
-                alert("incorrect password")
-            }
+        if(us==1){
+            
+        dataset[uname].balance += amt
+               alert("your acccount credited with amount" + amt + "aval bal=" + dataset[uname].balance)
+        }
+        else if(us==0){
+            alert("incorrect password");
+        }
+        else if(us==-1){
+            alert("user doesnot exist");
+        }
+        // let dataset = Bank.getData()
+        // if (uname in dataset) {
+        //     if (dataset[uname].password == pwd) {
+        //         dataset[uname].balance += amt
+        //         alert("your acccount credited with amount" + amt + "aval bal=" + dataset[uname].balance)
+        //     }
+        //     else {
+        //         alert("incorrect password")
+        //     }
 
-        }
-        else {
-            alert("no user exist with provided username")
-        }
+        // }
+        // else {
+        //     alert("no user exist with provided username")
+        // }
     }
     static withdraw(){
         let uname = document.querySelector("#uname").value
